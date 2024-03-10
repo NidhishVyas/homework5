@@ -18,7 +18,7 @@ def __init__(self):
 
 def configure_logging():
     log_dir = "logs"
-    os.makedirs(log_dir, exist_ok=True)  # Create logs directory if it doesn't exist
+    os.makedirs(log_dir, exist_ok=True)  
     logging_conf_path = "logging.conf"
     if os.path.exists(logging_conf_path):
         logging.config.fileConfig(logging_conf_path, disable_existing_loggers=False)
@@ -30,7 +30,7 @@ def configure_logging():
 
 
 def main():
-    configure_logging()  # Configure logging at the start of the script
+    configure_logging()  
     operations = discover_operations()
     while True:
         display_menu(operations)
@@ -91,19 +91,19 @@ def start(self):
             cmd_input = input(">>> ").strip()
             if cmd_input.lower() == "exit":
                 logging.info("Application exit.")
-                sys.exit(0)  # Use sys.exit(0) for a clean exit, indicating success.
+                sys.exit(0)  
             try:
                 self.command_handler.execute_command(cmd_input)
             except (
                 KeyError
-            ):  # Assuming execute_command raises KeyError for unknown commands
+            ):  
                 logging.error(f"Unknown command: {cmd_input}")
                 sys.exit(
                     1
-                )  # Use a non-zero exit code to indicate failure or incorrect command.
+                )  
     except KeyboardInterrupt:
         logging.info("Application interrupted and exiting gracefully.")
-        sys.exit(0)  # Assuming a KeyboardInterrupt should also result in a clean exit.
+        sys.exit(0)  
     finally:
         logging.info("Application shutdown.")
 
