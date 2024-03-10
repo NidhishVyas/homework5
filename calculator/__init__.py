@@ -10,9 +10,7 @@ class Calculator:
         a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]
     ) -> Decimal:
         """Internal method to perform an operation."""
-        from calculator.calculation import (
-            Calculation,
-        )
+        from calculator.calculation import Calculation
 
         calculation = Calculation.create(a, b, operation)
         return calculation.perform()

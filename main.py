@@ -17,6 +17,8 @@ def __init__(self):
 
 
 def configure_logging():
+    log_dir = "logs"
+    os.makedirs(log_dir, exist_ok=True)  # Create logs directory if it doesn't exist
     logging_conf_path = "logging.conf"
     if os.path.exists(logging_conf_path):
         logging.config.fileConfig(logging_conf_path, disable_existing_loggers=False)
