@@ -15,3 +15,18 @@ def test_operation(a, b, operation, expected):
 def test_divide_by_zero():
     with pytest.raises(ZeroDivisionError):
         Calculator.load_operation("divide")(Decimal("10"), Decimal("0"))
+
+def test_load_invalid_operation():
+    # Test loading an invalid operation
+    with pytest.raises(ValueError):
+        Calculator.load_operation("invalid_operation")
+
+def test_load_unknown_operation():
+    # Test loading an unknown operation
+    with pytest.raises(ValueError):
+        Calculator.load_operation("unknown_operation")
+
+def test_load_operation_operation_not_found():
+    # Test loading when operation is not found in plugin module
+    with pytest.raises(ValueError):
+        Calculator.load_operation("operation_not_found")
